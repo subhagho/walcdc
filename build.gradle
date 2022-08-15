@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.4.3"
+    id "com.google.protobuf" version "0.8.18"
+    id 'maven-publish'
+    id 'java-library'
+}
+
+group 'ai.sapper.walcdc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.name == 'log4j') {
+            details.useTarget "org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2"
+        }
+        if (details.requested.name == 'commons-logging') {
+            details.useTarget "org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2"
+        }
+    }
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: "io.freefair.lombok"
+    apply plugin: "com.google.protobuf"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+        implementation 'org.slf4j:slf4j-log4j12:1.7.36'
+        implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+        implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+        // implementation 'org.apache.logging.log4j:log4j-to-slf4j:2.17.2'
+        implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2'
+        implementation 'com.google.guava:guava:31.1-jre'
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'org.projectlombok:lombok:1.18.24'
+        implementation 'commons-beanutils:commons-beanutils:1.9.4'
+        implementation 'commons-io:commons-io:2.11.0'
+
+        implementation 'org.apache.commons:commons-configuration2:2.7'
+        // https://mvnrepository.com/artifact/com.beust/jcommander
+        implementation group: 'com.beust', name: 'jcommander', version: '1.82'
+
+        implementation 'com.fasterxml.jackson.core:jackson-core:2.13.2'
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
+        implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
+
+        implementation 'com.google.protobuf:protobuf-java:2.5.0'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+}

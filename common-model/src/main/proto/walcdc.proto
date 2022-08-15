@@ -1,0 +1,81 @@
+syntax = "proto2";
+
+package ai_sapper_walcdc_common_model;
+
+option java_multiple_files = true;
+option java_package = "ai.sapper.walcdc.common.model";
+option java_outer_classname = "WALCDC";
+
+message Transaction {
+  enum TxType {
+    DDL_CREATE_ENTITY = 0;
+    DDL_UPDATE_ENTITY = 1;
+    DDL_DROP_ENTITY = 2;
+
+    DML_INSERT_ENTITY = 3;
+    DML_UPDATE_ENTITY = 4;
+    DML_DELETE_ENTITY = 5;
+  }
+  required int64 txId = 1;
+  repeated int64 timestamp = 2;
+  required TxType type = 3;
+}
+
+message Entity {
+  required string id = 1;
+  required string namespace = 2;
+  required string name = 3;
+  optional string schemaLocation = 4;
+}
+
+message Field {
+  enum DataType {
+    BOOLEAN = 0;
+    SHORT = 1;
+    INT = 2;
+    LONG = 3;
+    FLOAT = 4;
+    DOUBLE = 5;
+    BYTE = 6;
+    CHAR = 7;
+    STRING = 8;
+    ARRAY = 9;
+    OBJECT = 10;
+    CUSTOM = 11;
+  }
+  required string name = 1;
+  required DataType dataType = 2;
+}
+
+message FieldValue {
+  required Field field = 1;
+  optional bytes value = 2;
+}
+
+message DDLFieldChange {
+  optional Field original = 1;
+  optional Field target = 2;
+}
+
+message DDLChangeSet {
+  required Transaction tnx = 1;
+  required Entity entity = 2;
+  repeated DDLFieldChange changes = 3;
+}
+
+message DataFieldChange {
+  enum ChangeOp {
+    ADD = 0;
+    RENAME = 1;
+    DROP = 2;
+  }
+  required FieldValue value = 1;
+  repeated ChangeOp op = 2;
+  optional FieldValue original = 3;
+}
+
+message ChangeSet {
+  required Transaction tnx = 1;
+  required Entity entity = 2;
+  repeated DataFieldChange changes = 3;
+}

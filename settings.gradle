@@ -1,0 +1,3 @@
+rootProject.name = 'walcdc'
+include 'common-model'
+
