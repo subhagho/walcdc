@@ -1,0 +1,5 @@
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.apache.kudu/kudu-client
+    implementation 'org.apache.kudu:kudu-client:1.16.0'
+}

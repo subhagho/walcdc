@@ -48,6 +48,11 @@ public final class WALCDC {
   static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ai_sapper_walcdc_common_model_ChangeSet_fieldAccessorTable;
+  static com.google.protobuf.Descriptors.Descriptor
+    internal_static_ai_sapper_walcdc_common_model_ChangeMessage_descriptor;
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ai_sapper_walcdc_common_model_ChangeMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -93,8 +98,15 @@ public final class WALCDC {
       "_common_model.Transaction\0225\n\006entity\030\002 \002(" +
       "\0132%.ai_sapper_walcdc_common_model.Entity" +
       "\022?\n\007changes\030\003 \003(\0132..ai_sapper_walcdc_com" +
-      "mon_model.DataFieldChangeB)\n\035ai.sapper.w" +
-      "alcdc.common.modelB\006WALCDCP\001"
+      "mon_model.DataFieldChange\"\206\002\n\rChangeMess" +
+      "age\022\021\n\tnamespace\030\001 \002(\t\022\014\n\004txId\030\002 \002(\t\022\016\n\006" +
+      "entity\030\003 \002(\t\022\014\n\004type\030\004 \002(\t\022\021\n\ttimestamp\030" +
+      "\005 \002(\004\022K\n\nsourceType\030\006 \002(\01627.ai_sapper_wa",
+      "lcdc_common_model.ChangeMessage.SourceTy" +
+      "pe\022\014\n\004body\030\007 \002(\014\022\016\n\006domain\030\010 \001(\t\022\022\n\nenti" +
+      "tyName\030\t \001(\t\"$\n\nSourceType\022\010\n\004KUDU\020\000\022\014\n\010" +
+      "DEBEZIUM\020\001B)\n\035ai.sapper.walcdc.common.mo" +
+      "delB\006WALCDCP\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -149,6 +161,12 @@ public final class WALCDC {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ai_sapper_walcdc_common_model_ChangeSet_descriptor,
               new java.lang.String[] { "Tnx", "Entity", "Changes", });
+          internal_static_ai_sapper_walcdc_common_model_ChangeMessage_descriptor =
+            getDescriptor().getMessageTypes().get(8);
+          internal_static_ai_sapper_walcdc_common_model_ChangeMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_ai_sapper_walcdc_common_model_ChangeMessage_descriptor,
+              new java.lang.String[] { "Namespace", "TxId", "Entity", "Type", "Timestamp", "SourceType", "Body", "Domain", "EntityName", });
           return null;
         }
       };

@@ -11,7 +11,14 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url layout.buildDirectory.dir(repoDirSnapshot)
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
 }
+
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         if (details.requested.name == 'log4j') {
@@ -31,6 +38,12 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven {
+            url layout.buildDirectory.dir(repoDirSnapshot)
+            mavenContent {
+                snapshotsOnly()
+            }
+        }
     }
 
     dependencies {
@@ -56,6 +69,8 @@ subprojects {
         implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.2'
 
         implementation 'com.google.protobuf:protobuf-java:2.5.0'
+        implementation 'ai.sapper.cdc:common:1.2-SNAPSHOT'
+        implementation 'ai.sapper.cdc:core:1.2-SNAPSHOT'
 
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'

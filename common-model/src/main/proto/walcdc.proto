@@ -79,3 +79,20 @@ message ChangeSet {
   required Entity entity = 2;
   repeated DataFieldChange changes = 3;
 }
+
+message ChangeMessage {
+  enum SourceType {
+    KUDU = 0;
+    DEBEZIUM = 1;
+  }
+
+  required string namespace = 1;
+  required string txId = 2;
+  required string entity = 3;
+  required string type = 4;
+  required uint64 timestamp = 5;
+  required SourceType sourceType = 6;
+  required bytes body = 7;
+  optional string domain = 8;
+  optional string entityName = 9;
+}

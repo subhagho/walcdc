@@ -9,13 +9,6 @@ buildscript {
 
 apply plugin: 'com.google.protobuf'
 
-group 'ai.sapper.walcdc'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
 protobuf {
     // Configure the protoc executable
     protoc {
@@ -46,8 +39,4 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
     // https://mvnrepository.com/artifact/org.apache.avro/avro
     implementation 'org.apache.avro:avro:1.11.0'
-}
-
-test {
-    useJUnitPlatform()
 }
