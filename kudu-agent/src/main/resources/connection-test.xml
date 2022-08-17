@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <configuration>
     <connections>
-        <!--connection>
-            <type>connections.ai.sapper.cdc.core.HdfsConnection</type>
-            <hdfs>
-                <name>test-hdfs</name>
-                <namenode>
-                    <primary>
-                        <URI>hdfs://192.168.0.2:9000</URI>
-                    </primary>
-                    <secondary>
-                        <URI>hdfs://192.168.0.3:9000</URI>
-                    </secondary>
-                </namenode>
-                <security>
-                    <enabled>false</enabled>
-                </security>
-                <enableAdmin>true</enableAdmin>
-            </hdfs>
-        </connection>
-        <connection>
-            <type>connections.ai.sapper.cdc.core.HdfsHAConnection</type>
-            <hdfs_ha>
-                <name>test-hdfs-ha</name>
-                <nameservice>ha-cluster</nameservice>
-                <failoverProvider>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
-                </failoverProvider>
-                <namenodes>nn1=192.168.0.2:9000;nn2=192.168.0.3:9000</namenodes>
-                <security>
-                    <enabled>false</enabled>
-                </security>
-                <enableAdmin>true</enableAdmin>
-            </hdfs_ha>
-        </connection -->
         <connection>
             <type>connections.ai.sapper.cdc.core.ZookeeperConnection</type>
             <zookeeper>

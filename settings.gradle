@@ -1,4 +1,5 @@
 rootProject.name = 'walcdc'
 include 'common-model'
 include 'kudu-agent'
+include 'core'
 
